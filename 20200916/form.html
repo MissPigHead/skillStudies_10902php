@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+
+<body>
+  <!-- fieldset 提供表單一個區塊呈現的方式 -->
+  <fieldset>
+    <legend>表單介紹</legend>
+    <!-- 傳送檔案必需是post & 宣告 enctype="multipart/form-data" -->
+    <form method="post" action="form.php" enctype="multipart/form-data">
+      <table border="0" width="100%">
+        <tr>
+          <td width="20%"><label for="inputAcc">帳號：</label></td>
+          <td width="80%"><input type="text" name="acc" placeholder="請輸入帳號" id="inputAcc"></td>
+        </tr>
+        <tr>
+          <td>密碼：</td>
+          <td><input type="password" name="pwd" placeholder="密碼最少6位字元"></td>
+        </tr>
+        <tr>
+          <td>性別：</td>
+          <td>
+            <input type="radio" name="gender" value="boy" id="inputB">
+            <label for="inputB">男生</label>
+
+            <input type="radio" name="gender" value="gril" id="inputG" checked>
+            <label for="inputG">女生</label>
+          </td>
+        </tr>
+        <tr>
+          <td>興趣：</td>
+          <td>
+            <label><input type="checkbox" name="like[]" value="拍照">拍照</label>
+            <label><input type="checkbox" name="like[]" value="看書">看書</label>
+            <label><input type="checkbox" name="like[]" value="唱歌">唱歌</label>
+            <label><input type="checkbox" name="like[]" value="寫網頁" checked>寫網頁</label>
+            <label><input type="checkbox" name="like[]" value="逛街" checked>逛街</label>
+          </td>
+        </tr>
+        <tr>
+          <td>出生：</td>
+          <td>
+            <select name="birthYear">
+              <option value="1980">1980</option>
+              <option value="1985">1985</option>
+              <option value="1990">1990</option>
+              <option value="1995">1995</option>
+              <option value="2000">2000</option>
+            </select> 年
+          </td>
+        </tr>
+        <tr>
+          <td>上傳：</td>
+          <td><input type="file" name="upload"></td>
+        </tr>
+        <tr>
+          <td valign="top">留言資訊：</td>
+          <td>
+            <textarea name="info" cols="80%" rows="5"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><hr></td>
+        </tr>
+        <!-- ------- -->
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="送出">
+            <input type="reset" value="重置">
+          </td>
+        </tr>
+
+
+
+      </table>
+
+
+
+
+
+
+
+    </form>
+  </fieldset>
+</body>
+
+</html>

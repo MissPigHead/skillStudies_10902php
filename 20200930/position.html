@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box !important;
+    }
+
+    body {
+      background: #ccc;
+      border: 1px solid #ff0;
+      margin: 50px;
+      padding: 50px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main {
+      background: #aaa;
+      border: 1px solid #f00;
+      margin: 50px;
+      padding: 50px;
+    }
+
+    .bigbox {
+      border: 1px solid #f0f;
+      background: darkslateblue;
+      width: 302px;
+      font-size: 0;
+    }
+
+    .box {
+      width: 50px;
+      height: 50px;
+      background: darkred;
+      color: white;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 50px;
+      display: inline-block;
+      margin: 5px;
+      font-size: 1rem;
+    }
+
+    .relative {
+      position: relative;
+      background: coral;
+      bottom: 25px;
+      left: -25px;
+      z-index: 99999;
+    }
+
+    .absolute {
+      position: absolute;
+      background: darkolivegreen;
+
+      /* 上下左右至中  ver1 */
+      /* left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto; */
+
+
+      z-index: 20;
+      margin: 0;
+
+      /* 上下左右至中 ver2 */
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+    }
+
+    .fixed {
+      position: fixed;
+      right: 25px;
+      top: 25px;
+      margin: 0;
+
+    }
+  </style>
+</head>
+
+<body>
+  <!-- .main>.bigbox>div.box{$}*20 -->
+  <div class="main">
+    <div class="bigbox" style="position: relative;">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box relative">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+      <div class="box">10</div>
+      <div class="box">11</div>
+      <div class="box">12</div>
+      <div class="box absolute">13</div>
+      <div class="box">14</div>
+      <div class="box">15</div>
+      <div class="box">16</div>
+      <div class="box fixed">17</div>
+      <div class="box" style="position:relative;z-index: 10;">18</div>
+      <div class="box">19</div>
+      <div class="box">20</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

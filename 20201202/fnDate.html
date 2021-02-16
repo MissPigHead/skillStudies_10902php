@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let now=Date();
+    let time=new Date();
+
+    let custime1=new Date(2020,11,6,12,0,0,999); //month=0~11
+    let custime2=new Date("2020-12-31T23:59:59"); //ISO 8601 時間表示法 (UTC)
+
+    //get系列
+    time.getFullYear(); //西元年
+    time.getMonth()+1; //月
+    time.getDate(); //日
+    time.getHours();//時
+    time.getMinutes();//分
+    time.getSeconds();//秒
+
+    const week=["週日","週一","週二","週三","週四","週五","週末"];
+    week[custime1.getDay()];
+    week[time.getDay()];
+
+    /*倒數日子*/
+    const nowTime=new Date();
+    const finalTime=new Date("2020-12-31T23:59:59");
+    tmin=nowTime.getTime();
+    tmax=finalTime.getTime();
+
+    beto=Math.floor((tmax-tmin)/1000); //總秒數
+
+    const bsec=0;
+    const bmin=0;
+    const bhur=0;
+    const bday=0;
+
+    console.log(`距離今年只剩下${bday}天${bhur}時${bmin}分${bsec}秒！！`)
+    
+    //set系列
+    let mdytime=new Date();
+    //mdytime.getDate(); 取為2
+    //mdytime.setDate(5); 指定為5
+    //console.log(mdytime); 已變成X月5日
+
+    mdytime.setMonth(mdytime.getMonth()+1);
+
+
+  </script>
+</body>
+</html>

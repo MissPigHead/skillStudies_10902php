@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .flex {
+      display: flex;
+      height: 600px;
+      /* width: 400px; */
+      background: cornsilk;
+      border: 1px solid;
+
+
+      /* 
+      flex-direction: row; 定義主軸的方向性 row(default),column,row-reverse,column-reverse
+      flex-wrap: nowrap; 當item總量超出flex時是否要拆行 nowrap(default),wrap,wrap-reverse
+       */
+      flex-flow: row nowrap;
+
+      /*主軸的對齊方式 flex-start,flex-end,center,space-between,space-around,space-evenly*/
+      /* justify-content: space-evenly; */
+
+
+      /*交軸的對齊方式 flex-start,flex-end,center,stretch(default)*/
+      /* align-items: center; */
+
+      /*針對多行的對齊方式，只有當你有設定wrap才有用，參數同主軸對齊的方式*/
+      align-content: stretch;
+    }
+
+
+    /*
+    flex:flex-grow flex-shrink flex-basis
+    */
+
+    .item {
+      /* width: 150px; */
+      height: 150px;
+      margin: 0;
+      /* max-width: 200px; */
+
+
+      /* flex-grow:0;
+      flex-shrink:1;
+      flex-basis: 33.333%; */
+      flex:0 1 25%;
+    }
+
+    .r {
+      background: crimson;
+      max-height: 500px;
+      min-height: 50px;
+      /*單一要求，寫在指定的flex子項目*/
+      /* align-self: flex-start;  */
+
+      order:3;
+    }
+
+    .g {
+      background: darkgreen;
+
+      order:0;
+    }
+
+    .b {
+      background: darkslateblue;
+      /*單一要求，寫在指定的flex子項目*/
+      /* align-self: flex-end;  */
+
+      order:-3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <p class="item r">A</p>
+    <span class="item g">B</span>
+    <p class="item b">C</p>
+    <!-- <p class="item r">AAA</p> -->
+
+    <!-- 
+      <p class="item r">AAA</p>
+      <span class="item g">BBB</span>
+      <p class="item b">CCC</p>
+      <p class="item r">AAA</p>
+      <span class="item g">BBB</span>
+      <p class="item b">CCC</p>
+    -->
+
+  </div>
+
+</body>
+
+</html>

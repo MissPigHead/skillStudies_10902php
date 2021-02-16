@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border: 1px dotted;
+
+      /*border 間距*/
+      border-spacing: 10px;
+
+      /*border 合併*/
+      border-collapse: collapse;
+
+      /*隱藏空欄位*/
+      empty-cells: hide;
+
+      text-align: center;
+      width: 50vw;
+      margin: 0 auto;
+      /* box-shadow:
+        -3px -3px 5px 0px #719bda,
+        3px 3px 5px 0px #da7171,
+        inset 0 0 5px 3px #8b71da; */
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 10px;
+    }
+    td.w20 {
+      width: 20%
+    }
+    td.w50 {
+      width: 50%
+    }
+    td.w30 {
+      width: 30%
+    }
+    tr.odd{
+      background: #eee;
+    }
+    tr:nth-of-type(even){
+      background: rgb(254, 241, 255);
+    }
+
+    tr:hover{
+      background: rgb(255 151 171);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- table>tbody>tr>td{item $}*4 -->
+  <table>
+    <tbody>
+      <tr class="odd">
+        <td class="w20">item 1</td>
+        <td class="w50"></td>
+        <td class="w30"></td>
+      </tr>
+      <tr>
+        <td>item 4</td>
+        <td>item 5</td>
+        <td>item 6</td>
+      </tr>
+      <tr class="odd">
+        <td>item 7</td>
+        <td>item 8</td>
+        <td>item 9</td>
+      </tr>
+      <tr>
+        <td>item 10</td>
+        <td>item 11</td>
+        <td>item 12</td>
+      </tr>
+      <tr class="odd">
+        <td class="w20">item 1</td>
+        <td class="w50"></td>
+        <td class="w30"></td>
+      </tr>
+      <tr>
+        <td>item 4</td>
+        <td>item 5</td>
+        <td>item 6</td>
+      </tr>
+      <tr class="odd">
+        <td>item 7</td>
+        <td>item 8</td>
+        <td>item 9</td>
+      </tr>
+      <tr>
+        <td>item 10</td>
+        <td>item 11</td>
+        <td>item 12</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  UserName:<input type="text">
+  <button class="save">Save</button>
+  <button class="clear">Clear</button>
+
+  <script>
+    document.querySelector(".save").onclick=()=>{
+      // console.log("save");
+      localStorage.setItem("userName",document.querySelector("input").value);
+      sessionStorage.setItem("userName",document.querySelector("input").value);
+      /*
+      localStorage: 時間永久，除非用JS去刪除或user作清空才會消失
+      sessionStorage: 只有當下工作階段存在，網頁關閉會消失
+      */
+    }
+
+    console.log(localStorage.userName,sessionStorage.userName);
+
+    document.querySelector(".clear").onclick=()=>{
+      localStorage.removeItem("userName");
+      sessionStorage.removeItem("userName");
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>

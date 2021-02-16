@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    a {
+      display: block;
+      padding: 20px 5px;
+      text-decoration: none;
+      background: #f1bf86;
+      margin: 5px auto;
+      color: #65350a;
+      width: 200px;
+      text-align: center;
+    }
+
+    .son {
+      background: rgb(255, 223, 186);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <!-- <a href="#">全部商品(total)</a>
+    <a href="#" id="fa1" class="fa">1111111(3)</a>
+    <a href="#" class="fa1 son">1A(3)</a>
+    <a href="#" class="fa1 son">1B(0)</a>
+    <a href="#" id="fa2" class="fa">2222222(2)</a>
+    <a href="#" class="fa2 son">2A(1)</a>
+    <a href="#" class="fa2 son">2B(1)</a>
+    <a href="#" id="fa3" class="fa">3333333</a>
+    <a href="#" class="fa3 son">3A</a>
+    <a href="#" class="fa3 son">3B</a>
+    <a href="#" id="fa4" class="fa">4444444</a>
+    <a href="#" class="fa4 son">4A</a>
+    <a href="#" class="fa4 son">4B</a> -->
+  </div>
+  <script>
+    $.getJSON("data.json", function (re) {
+      todo(re.q4t4);
+    });
+
+    function todo(myjson) {
+
+      //create DOM
+      let total = 0;
+      for (const fa of myjson) {
+        // console.log(fa.sub,fa.id);
+        let sonCode = "", faNum = 0;
+        for (const son of fa.sub) {
+          sonCode += `<a href="#" class="fa${fa.id} son">${son.title}(${son.count})</a>`;
+          faNum += son.count;
+          total += son.count;
+        }
+        const faCode = `<a href="#" id="fa${fa.id}" class="fa">${fa.title}(${faNum})</a>`;
+        $(".menu").append(faCode + sonCode);
+      }
+      $(".menu").prepend(`<a href="#">全部商品(${total})</a>`);
+
+      //effect
+      $(".son").hide();
+      $(".fa").mouseover(function () {
+        const faid = this.id; //fa1
+        $(".son").not("." + faid).slideUp('fast'); //只針對非目標之SON隱藏
+        $("." + faid).slideDown('fast');
+      });
+
+    }
+  </script>
+</body>
+
+</html>

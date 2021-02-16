@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    /*************************************************因為CORS 同源政策，對方API沒有特別全面開放，所以取得會失敗*********************
+    $.getJSON('https://www.smeservice.org.tw/api/V1/project') 
+    .done((re) => {
+      console.log(re)
+    });
+    ******************************************************************************************************************************/
+    console.log(decodeURIComponent('\u0068\u0074\u0074\u0070\u0026\u0023\u0035\u0038\u003B\u0026\u0023\u0034\u0037\u003B\u0026\u0023\u0034\u0037\u003B\u0077\u0077\u0077\u002E\u0073\u006D\u0065\u0067\u002E\u006F\u0072\u0067\u002E\u0074\u0077\u0026\u0023\u0034\u0037\u003B'));
+
+    $.get('data.json').done((re) => {
+      // console.log(re);
+      // console.log(JSON.stringify(re));
+      // const str = JSON.stringify(re);
+
+      console.log(decodeURIComponent(JSON.stringify(re)));
+
+      // result=unescape(re);
+      // console.log(unescape(JSON.stringify(re)));
+
+    }
+    );  //後端給的會是字串，因為getJSON方式自動轉JSON格式
+
+
+
+  </script>
+</body>
+
+</html>

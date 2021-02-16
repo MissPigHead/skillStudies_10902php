@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div.demo1{
+      /* 強制切斷 */
+      word-break: break-all;
+      color:red;
+      text-indent: 5rem;
+    }
+    div:not(.demo1){
+      color:green;
+    }
+    a{
+      background:hotpink;
+      width:100px;
+      height:100px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo1" style="width:200px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam laboriosam neque molestiae quos voluptatibus illo assumenda ipsam, soluta enim nam facere reprehenderit voluptates velit doloribus facilis dicta, nobis maiores quisquam.</div>
+  <p class="demo1">Lorem</p>
+  <hr>
+  <div>
+    <a href="#">LINK</a>
+    <a href="#">LINK</a>
+    <a href="#">LINK</a>
+    <a href="#">臨時出</a>
+  </div>
+  <hr>
+  <div>
+    <!-- inline內的垂直對齊 -->
+    <span style="vertical-align: top;">lorem</span>
+    <img style="vertical-align: middle;" src="https://fakeimg.pl/150x150">
+    <span style="vertical-align: bottom;">lorem</span>
+  </div>
+</body>
+</html>

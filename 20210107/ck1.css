@@ -1,0 +1,53 @@
+body {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(36, 36, 36, 1) 62%,
+    rgba(71, 71, 71, 1) 100%
+  );
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#clock1 {
+  width: 740px;
+  height: 100px;
+  padding: 10px;
+  display: flex;
+  background: rgba(70, 69, 69, 0.281);
+}
+.ck {
+  background: linear-gradient(
+    45deg,
+    rgba(48, 48, 48, 0.3) 0%,
+    rgba(71, 71, 71, 0.3) 100%
+  );
+}
+#clock1 div {
+  display: inline-flex;
+}
+.c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c0 {
+  width: 100px;
+  height: 100px;
+  background: url("num.png");
+}
+.cc {
+  width: 50px;
+  height: 100px;
+  background: url("num.png");
+  background-position: 50px;
+  margin: 0 10px;
+}
+.c1 {background-position: 0px;}
+.c2 {background-position: -100px;}
+.c3 {background-position: -200px;}
+.c4 {background-position: -300px;}
+.c5 {background-position: -400px;}
+.c6 {background-position: -500px;}
+.c7 {background-position: 450px;}
+.c8 {background-position: 350px;}
+.c9 {background-position: 250px;}
+.c0 {background-position: 150px;}

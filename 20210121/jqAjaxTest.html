@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    $.ajax({
+      type: 'POST',  // fomr[method=post]
+      url: 'api.php',  //form[action=url]
+      data: data, // your data
+      success: callback, //成功時可執行什麼函式
+      dataType: 'html' //拿回來的資料是怎樣的格式
+    });
+    ///////////////////////////////////////
+    $.getJSON("data.json", function (re) {
+      todo(re.q1t6);
+    });
+    /*
+    $.ajax({
+      type: 'GET',
+      url: 'data.json',
+      dataType: 'json',
+      success: function(re){
+        todo(re.q1t6);
+      }
+    });
+    */
+    /////////////////////////////////////
+    $.post('api.php',data,callback(result));
+    $.get('api.php',data,callback(result));
+
+  </script>
+</body>
+
+</html>

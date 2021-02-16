@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    #red {
+      background: red;
+    }
+
+    #yellow {
+      background: gold;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>toggle</button>
+  <button>fade</button>
+  <button>fato</button>
+  <button>slide</button>
+  <button>delay</button>
+  <button>stop</button>
+  <button>custom</button>
+  <hr>
+  <div id="red" style="display: none;"></div>
+  <div id="yellow">A</div>
+
+
+  <script>
+    $("button:contains(toggle)").click(() => {
+      $("#yellow").toggle(1000, function () {
+        $("#red").toggle(1000);
+      });
+    });
+    $("button:contains(fade)").click(() => {
+      console.log(111);
+      $("#yellow").fadeToggle(3000, function () {
+        $("#red").fadeToggle(3000);
+      });
+    });
+    $("button:contains(fato)").click(() => {
+      $("#yellow").fadeTo(1000, 0.3, function () {
+        $("#red").fadeTo(1000, 0.3);
+      });
+    });
+    $("button:contains(slide)").click(() => {
+      $("#yellow").slideToggle(1000, function () {
+        $("#red").slideToggle(1000);
+      });
+    });
+    $("button:contains(delay)").click(() => {
+      $("#yellow").slideToggle(1000, function () {
+        $("#red").delay(3000).slideToggle(1000);
+      });
+    });
+    $("button:contains(stop)").click(() => {
+      $("#yellow").stop();
+      $("#red").stop();
+    });
+    $("button:contains(custom)").click(() => {
+      console.log(123);
+      $("#yellow")
+        .animate({
+          fontSize: "1rem",
+          left: "100px",
+        }, 1000)
+        .animate({
+          height: "500px"
+        }, 1000)
+        .slideToggle(1000);
+    });
+  </script>
+</body>
+
+</html>

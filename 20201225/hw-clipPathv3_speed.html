@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #myblock {
+      width: 100px;
+      height: 100px;
+      transition: 0.5s;
+    }
+
+    .square {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      background-color: red;
+    }
+
+    .triangle {
+      clip-path: polygon(50% 0%, 50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .circle {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myblock" style="background-color: red;"></div>
+  <hr />
+  <input class="btn" type="button" title="square" value="正方形" />
+  <input class="btn" type="button" title="circle" value="圓形" />
+  <input class="btn" type="button" title="triangle" value="三角形" />
+  <p>Color Code: <input type="text" value="red" /></p>
+
+  <script>
+    const zone = document.querySelector("#myblock");
+    document.querySelectorAll("input[type=button]").forEach(item => item.onclick = () => zone.className = item.title);
+    document.querySelector("input[type=text]").onchange = function () {
+      zone.style.backgroundColor = this.value;
+    }
+  </script>
+</body>
+
+</html>

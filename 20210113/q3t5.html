@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form action="" style="text-align: center">
+    <h3>預告片清單</h3>
+    <table border="1" style="margin: 0 auto;">
+      <thead>
+        <tr>
+          <th>預告片海報</th>
+          <th>預告片片名</th>
+          <th>播放順序</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <td><img src="media/03A09.jpg" width="100"></td>
+          <td>03A09</td>
+          <td>
+            <input type="hidden" name="odr[03A09]" value="9">
+            <input type="button" class="up" value="上移">
+            <input type="button" class="down" value="下移">
+          </td>
+          <td>
+            <input type="checkbox">顯示
+            <input type="checkbox">刪除
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+    <div><input type="submit" value="編輯"></div>
+  </form>
+  <script>
+    $.getJSON("data.json", function (re) {
+      todo(re.q3t5);
+    });
+
+    function todo(myjson) {
+      // console.log(myjson);
+      for (const item of myjson) {
+        $('tbody').append(`
+          <tr>
+            <td><img src="${item.img}" width="100"></td>
+            <td>${item.text}</td>
+            <td>
+              <input type="hidden" name="odr[${item.text}]" value="${item.odr}">
+              <input type="button" class="up" value="上移">
+              <input type="button" class="down" value="下移">
+            </td>
+            <td>
+              <input type="checkbox">顯示
+              <input type="checkbox">刪除
+            </td>
+          </tr>
+        `);
+      }
+
+      $("input:button").click(function () {
+        let nodeSelf = $(this).parents("tr");
+        let nodeTarget = null;
+
+        switch (this.className) {
+          case "up":
+            nodeTarget = $(this).parents("tr").prev(); //前面
+            if (nodeTarget.length) { //不是0就作業
+              nodeSelf.find("input:hidden").val((i, v) => --v);
+              nodeTarget.find("input:hidden").val((i, v) => ++v);
+              nodeSelf.insertBefore(nodeTarget);
+            }
+            break;
+          case "down":
+            nodeTarget = $(this).parents("tr").next(); //後面
+            if (nodeTarget.length) { //不是0就作業
+              nodeSelf.find("input:hidden").val((i, v) => ++v);
+              nodeTarget.find("input:hidden").val((i, v) => --v);
+              nodeSelf.insertAfter(nodeTarget);
+            }
+            break;
+        }
+      });
+
+
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

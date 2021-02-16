@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      color: white;
+      background: #0F0;
+      position: relative;
+    }
+
+    .box::after {
+      content: "Transform";
+      background: #F00;
+      position:absolute;
+      width: 100px;
+      height: 100px;
+      left: 0;
+      top: 0;
+      opacity: 0.5;
+
+      /* transform: translateX(100%); */
+      /* transform: translate(100%,0) scale(1,2); */
+      /* transform: translate(100%,0) rotate(-45deg); */
+      /* transform: translate(100%,0) skew(0,45deg); */
+      /* transform: translate(100%,0) skew(45deg,44deg); */
+      
+      transform: rotate(45deg);
+      
+      /* transform-origin: 100% center; */
+      transform-origin: 100%;
+
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="box">Before</div>
+</body>
+
+</html>

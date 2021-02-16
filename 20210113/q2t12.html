@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th width="30%">標題</th>
+        <th width="70%">內容</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div id="alt" style="
+    position: absolute; 
+    width: 60%; 
+    min-height: 100px; 
+    max-height: 500px;
+    overflow: auto;
+    word-break:break-all; 
+    text-align:justify; 
+    background-color: rgb(255, 255, 204); 
+    top: 50px; 
+    left: 400px; 
+    z-index: 99; 
+    display: none; 
+    padding: 5px; 
+    border: 3px double rgb(255, 153, 0); 
+    background-position: initial initial; 
+    background-repeat: initial initial;"></div>
+
+  <script>
+    $.getJSON('data.json', function (re) { // step 1 
+      todo(re.q2t12);
+    });
+
+    function todo(myjson) { // step 2
+      // console.log(myjson);
+      for (const key in myjson) {
+        $('tbody').append(`
+        <tr>
+          <td>${key}</td>
+          <td class="sswww">
+            ${myjson[key].substr(0, 20)}...
+            <span style="display:none">${myjson[key]}</span>
+          </td>
+        </tr>
+        `);
+      }
+
+      //該DOM的EVENT必須要等畫面生成該節點才有效
+      $(".sswww").hover(function () {
+        // console.log(this); // 該.sswww
+        $("#alt").html( // 將自己兒子 span 的HTML 指定給 #alt 的HTML
+          $(this).children("span").html()
+        ).css({
+          "top": $(this).offset().top + 30,
+          "left": $(this).offset().left,
+        });
+        $("#alt").show();
+      }
+      )
+      // $(".sswww").mouseout(function () {
+      //   $("#alt").hide();
+      // }
+      // )
+      $("*").click(function(){
+        // console.log(this);
+        $("#alt").hide();
+      })
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

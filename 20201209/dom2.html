@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="http://www.google.com" title="atitle" name="aname" id="aid">Google</a>
+  <script>
+    let aa=document.getElementById("aid");
+    aa.attributes.title.value="ccc"; //aa.title="ccc"
+    aa.setAttribute("class","alink"); // aa.className="alink
+
+    // aa.removeAttribute("title")//  aa.title=""
+
+    
+  </script>
+</body>
+
+</html>

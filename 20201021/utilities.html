@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body{
+      background: darkslategray;
+    }
+    .demo1>span{
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: #c00;
+      margin: 10px;
+      border-width: 5px !important;
+    }
+    .demo2>span{
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: #c00;
+      margin: 10px;
+      border: 5px solid white;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div class="bg-info clearfix">
+    <button type="button" class="btn btn-secondary float-left text-primary">Example Button floated left</button>
+    <button type="button" class="btn btn-secondary float-right text-secondary">Example Button floated right</button>
+
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <button type="button" class="close">×</button>
+
+  </div>
+  
+  <div class="demo1">
+    <span class="border"></span>
+    <span class="border-top border-primary"></span>
+    <span class="border-right border-warning"></span>
+    <span class="border-bottom"></span>
+    <span class="border-left border-right"></span>
+  </div>
+  <div class="demo2">
+    <span class="border-0"></span>
+    <span class="border-top-0"></span>
+    <span class="border-right-0"></span>
+    <span class="border-bottom-0"></span>
+    <span class="border-left-0 border-right-0"></span>
+  </div>
+</body>
+
+</html>

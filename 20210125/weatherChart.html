@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body>
+  <canvas id="lokiChart" width="2000" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById('lokiChart').getContext('2d');
+
+    let kl, tp, nt, tu;
+    let timeLine = new Array();
+    let tpAryT = new Array(), klAryT = new Array(), ntAryT = new Array(), tuAryT = new Array();
+
+    $.getJSON('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-D0047-091?Authorization=CWB-77F7EF76-6578-458C-ACDF-72ABF4BE7727&downloadType=WEB&format=JSON')
+      .done(function (re) {
+        //13=kl,16=tp,18=nt,21=tu
+        kl = re.cwbopendata.dataset.locations.location[13];
+        tp = re.cwbopendata.dataset.locations.location[16];
+        nt = re.cwbopendata.dataset.locations.location[18];
+        tu = re.cwbopendata.dataset.locations.location[21];
+
+        /*
+        for (const item of tp.weatherElement[0].time) {
+          timeLine.push(item.startTime.substring(5, 13));
+          tpAryT.push(item.elementValue.value);
+        }
+        for (const item of kl.weatherElement[0].time) {
+          klAryT.push(item.elementValue.value);
+        }
+        for (const item of nt.weatherElement[0].time) {
+          ntAryT.push(item.elementValue.value);
+        }
+        for (const item of tu.weatherElement[0].time) {
+          tuAryT.push(item.elementValue.value);
+        }
+        */
+
+        for (let i = 0; i < tp.weatherElement[0].time.length; i++) {
+          // console.log(tp.weatherElement[0].time[i].startTime.substring(5,13));
+          timeLine[i] = tp.weatherElement[0].time[i].startTime.substring(5, 13);
+
+          tpAryT.push(tp.weatherElement[0].time[i].elementValue.value);
+          klAryT.push(kl.weatherElement[0].time[i].elementValue.value);
+          ntAryT.push(nt.weatherElement[0].time[i].elementValue.value);
+          tuAryT.push(tu.weatherElement[0].time[i].elementValue.value);
+        }
+
+        //計算上下限
+        const finMax=Math.max(Math.max(...tpAryT),Math.max(...ntAryT),Math.max(...klAryT),Math.max(...tuAryT));
+        const finMin=Math.min(Math.min(...tpAryT),Math.min(...ntAryT),Math.min(...klAryT),Math.min(...tuAryT));
+
+        new Chart(ctx, {
+          type: 'line', //圖表類型 
+          data: { //圖表資料
+            labels: timeLine,
+            datasets: [{ //Y軸資料組，目前只有一組如下：
+              //taipei
+              label: tp.locationName, //該資料的標題
+              data: tpAryT,
+              backgroundColor: 'rgba(255, 99, 132, 0)',
+              borderColor: 'rgba(255, 99, 132, 0.5)',
+              borderWidth: 3
+            }, {
+              //newtaipei
+              label: nt.locationName, //該資料的標題
+              data: ntAryT,
+              backgroundColor: 'rgba(54, 162, 235, 0)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 3
+            }, {
+              //keelung
+              label: kl.locationName, //該資料的標題
+              data: klAryT,
+              backgroundColor: 'rgba(255, 206, 86, 0)',
+              borderColor: 'rgba(255, 206, 86, 1)',
+              borderWidth: 3
+            }, {
+              //taoyuan
+              label: tu.locationName, //該資料的標題
+              data: tuAryT,
+              backgroundColor: 'rgba(75, 192, 192, 0)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 3
+            }]
+
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  // beginAtZero: true
+                  stepSize: 0.5,
+                  max:finMax+2,
+                  min:finMin-2
+                }
+              }]
+            }
+          }
+        });
+
+
+
+      })
+      .fail(function () {
+        console.log("api connected fail!!");
+      });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const theSwitch = 8 < 5;
+    if (theSwitch) {
+      console.log("這世界充滿美好");
+    }
+    else {
+      console.log("這世界很殘爆，爆哥的爆");
+    }
+
+    const height = 158, money = 5000, face = false;
+
+    if ((height > 178) && (money > 10000) && face) console.log("100分");
+    else console.log("0~99分");
+
+    if ((height > 178) || (money > 10000) || face) console.log("60~99分");
+    else console.log("不及格");
+
+    const aa = 2, bb = 6, cc = 1;
+    if (aa == 1 && bb == 1 && cc == 1) console.log("豹子");
+    else if (aa + bb + cc > 9) console.log("大");
+    else console.log("小");
+
+    const day = 3;
+    const msg = day < 6 ? "workday" : "holiday";//三元運算子
+    console.log("today is " + msg);
+
+    console.log("----------------------------");
+
+
+    const lang = "jp";
+    switch (lang) {
+      case "jp":
+        console.log("愛してる");
+        break;
+      case "en":
+        console.log("I Love U");
+        break;
+      case "tw":
+        console.log("小姐姐我好喜歡你");
+        break;
+      case "hk":
+        console.log("靚女，我好鍾意黎啊");
+        break;
+      default:
+        console.log("❤❤❤❤❤");
+        break;
+    }
+    
+    // if(lang=="jp") console.log("愛してる");
+    // else if(lang=="en") console.log("I Love U");
+    // else if(lang=="tw") console.log("小姐姐我好喜歡你");
+    // else if(lang=="hk") console.log("靚女，我好鍾意黎啊");
+    // else console.log("❤❤❤❤❤");
+
+    console.log(function(){
+      if(lang=="jp") return "愛してる";
+      else if(lang=="en") return "I Love U";
+      else if(lang=="tw") return "小姐姐我好喜歡你";
+      else if(lang=="hk") return "靚女，我好鍾意黎啊";
+      else return "❤❤❤❤❤";
+    }());
+
+
+  </script>
+</body>
+
+</html>

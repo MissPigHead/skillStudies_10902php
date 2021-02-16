@@ -1,0 +1,41 @@
+/* @media screen{
+
+  body{
+    background: #000;
+  }
+  h1{
+    color:red;
+  }
+
+}
+
+@media print{
+  
+  body{
+    background: green;
+  }
+  h1{
+    color:purple;
+  }
+} */
+
+@media (min-width:320px) and (max-width:549px){
+  body{
+    background: red;
+  }
+}
+@media (min-width:550px) and (max-width:767px){
+  body{
+    background: green;
+  }
+}
+@media (min-width:768px) and (max-width:959px){
+  body{
+    background: blue;
+  }
+}
+@media print,(min-width:960px){
+  body{
+    background: purple;
+  }
+}

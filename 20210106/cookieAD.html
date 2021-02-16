@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #myFull {
+      width: 100vw;
+      height: 100vh;
+      background: rgba(30, 30, 30, 0.5);
+      position: fixed;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    #myAd {
+      position: relative;
+      cursor: pointer;
+    }
+
+    #adClose {
+      position: absolute;
+      right: -2rem;
+      top: -2rem;
+
+      background: #eee;
+      border-radius: 50%;
+      line-height: 0;
+      color: #333a;
+    }
+
+    #adClose:hover {
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myFull">
+    <div id="myAd">
+      <img src="https://picsum.photos/350/450/?random=1" onclick="gotoAd()">
+      <div id="adClose"><span class="material-icons">close</span></div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+    <h1>HELLO WORLD</h1>
+  </div>
+
+  <script>
+    function gotoAd() {
+      open("https://www.google.com/", "_blank");
+      //console.log("img active"); //捕獲與冒泡，下回分曉
+    }
+    const clstoAd = () => {
+      document.getElementById("myFull").style.display = "none";
+      //console.log("myFull active");  //捕獲與冒泡，下回分曉
+    }
+
+    //用 JS 指定某 DOM 之 click 等同函式變數 clstoAd
+    document.getElementById("adClose").onclick = clstoAd;
+    //用 Event 去監聽click事件之反應
+    document.getElementById("myFull").addEventListener("click", clstoAd);
+
+    /*
+    //select
+    console.log(document.cookie);
+
+    //insert & update
+    document.cookie="loki=gold5";
+
+    //delete = update + deadline before
+    */
+
+    /* set deadtime
+      const endTime = new Date();
+      // console.log(endTime);
+      // endTime.setTime(endTime.getTime() + 10000);
+      endTime.setSeconds(endTime.getSeconds() + 10);
+      // console.log(endTime);
+      document.cookie = "loki=gold5;expires=" + endTime.toUTCString();
+    */
+
+    //"loki=gold5; july=mark47; watched=ture"
+    function findCook1(name) { //name=watched
+      const ckary = document.cookie.split("; "); //ary
+      // console.log(ckary);
+      const getck = ckary.find(function (e) { // e="watched=ture"
+        return (name + "=" == e.substr(0, name.length + 1)); // thirdTime : "lo=" vs "lo" =>true;
+        /*
+        boolean t will getck=e;
+        boolean f do each next;
+        */
+      });
+      // console.log(getck);
+      //有找到時回傳該字串之"="符號之後的內文，否則回傳布林F
+      if (getck != undefined) return getck.split("=")[1];
+      else return false;
+    }
+
+    const findCook2 = (name) => {
+      const ckary = document.cookie.split("; "); //ary , ckary[0]="loki=gold5"
+      let objCK = new Object(); //產生一個物件目前沒東西
+
+      // ckary.forEach((e)=>{ //e="loki=gold5" at firstTime
+      //   const cacheAry=e.split("=");
+      //   objCK[cacheAry[0]]=cacheAry[1];
+      // });
+      ckary.forEach(e => objCK[e.split("=")[0]] = e.split("=")[1]);
+
+      // console.log(objCK);
+      if (name in objCK) return objCK[name];   // loki in objCK ? return objCK["loki"]
+      else return false;
+    };
+
+
+    const checkCook = findCook2("watchAD");
+    if (!checkCook) { // 代表還沒被指定cookie，等於新訪客 => 塞cookie且死亡時間為今晚午夜
+      const endTime = new Date();
+      endTime.setHours(23), endTime.setMinutes(59), endTime.setSeconds(59);
+      // console.log(endTime);
+      document.cookie = "watchAD=yes;expires=" + endTime.toUTCString();
+    }
+    else { // 有找到cookie，代表已訪過 => 拿掉廣告
+      // clstoAd(); //dipsplay:none
+      document.getElementById("myFull").remove(); // 移除DOM
+    }
+
+  </script>
+</body>
+
+</html>

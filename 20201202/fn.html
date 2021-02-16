@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const str = "HELLO WOLRD";
+    console.log(str.length);
+    const ary = [123, 456, 789];
+    console.log(ary.length);
+    // const jsn={a:1,b:2,c:3};
+
+    a = "5";
+    b = 3;
+    //a+3+b => 83
+    let ns = Number(a) + 3 + String(b);
+    console.log(ns, typeof (ns));
+    console.log(parseInt(ns), typeof (parseInt(ns)));
+
+    /*******************/console.log("-----------------------------");
+
+    // Math
+    Math.round(6.4); //4捨
+    Math.ceil(6.4) //無進
+    Math.floor(6.2) //無捨
+    Math.random(); //  0<=x<1 之浮點數
+
+    //0<=x<15 之整數  0~14
+    const rdm = Math.floor(Math.random() * 15) // 0<=x<15 之整數
+    console.log(`random is ${rdm} between 0~14`);
+
+    // 設計 77~99 => (0~22) + 77
+    const rdm2 = Math.floor(Math.random() * 23) + 77;
+    console.log(`random is ${rdm2} between 77~99`);
+
+    // function rand(min,max){
+    //   return Math.floor(Math.random()*(max-min+1))+min;
+    // }
+
+    // const rand=(min,max)=>{
+    //   return Math.floor(Math.random()*(max-min+1))+min;
+    // }
+
+    // const rand = (min, max, run = 1) => {
+    //   if (run > 1) {
+    //     let ary = new Array();
+    //     for (let i = 0; i < run; i++)
+    //       ary.push(Math.floor(Math.random() * (max - min + 1)) + min);
+    //     return ary;
+    //   }
+    //   else return Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
+
+    const rand = (min, max, run = 1) => {
+      let ary = new Array();
+      do {
+        ary.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        run--;
+      } while (run > 0);
+      return ary;
+    }
+
+
+  </script>
+</body>
+
+</html>

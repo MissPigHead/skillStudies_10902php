@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* display: none; */
+    /* visibility: hidden; 隱藏 */
+    div {
+      background: aquamarine;
+      width: 100px;
+      height: 100px;
+      margin: 50px;
+      border: 1px solid;
+    }
+    .demo1{
+      display: none;
+    }
+    .demo2{
+      visibility: hidden;
+    }
+    .demo2>p{
+      visibility: visible;
+    }
+
+    .demo3{
+      opacity: 0;
+    }
+    .demo3>p{
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo1">#1</div>
+  <div class="demo2"><p>#2</p></div>
+  <div class="demo3"><p>#3</p></div>
+</body>
+
+</html>

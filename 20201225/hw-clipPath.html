@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #myblock {
+      width: 100px;
+      height: 100px;
+    }
+
+    .square {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .triangle {
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .circle {
+      clip-path: circle(50% at 50% 50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myblock" style="background-color: red;"></div>
+  <hr />
+  <input class="btn" type="button" value="正方形" />
+  <input class="btn" type="button" value="圓形" />
+  <input class="btn" type="button" value="三角形" />
+  <p>Color Code: <input type="text" onchange="color(this.value)" value="red"/></p>
+
+  <script>
+    let zone = document.querySelector("#myblock");
+    document.querySelectorAll("input[type=button]").forEach(function (item) {
+      item.onclick = function () {
+        switch (this.value) {
+          case "正方形":
+            zone.className = "square";
+            break;
+          case "圓形":
+            zone.className = "circle";
+            break;
+          case "三角形":
+            zone.className = "triangle";
+            break;
+        }
+      }
+    });
+    document.querySelector("input[type=text]").onchange = function () {
+      zone.style.backgroundColor = this.value;
+    }
+    // let aaa=document.getElementsByClassName("btn");
+    // for (const item of aaa) {
+    //   item.onclick=function (){
+    //   }
+    // }
+
+
+
+    /*
+    var zone = document.getElementById("myblock");
+    var clr = zone.style.backgroundColor; //red
+    function trans(re) {
+      switch (re) {
+        case "A":
+          zone.className = "square";
+          break;
+        case "B":
+          zone.className = "circle";
+          break;
+        case "C":
+          zone.className = "triangle";
+          break;
+      }
+    }
+    function color(re) {
+      zone.style.backgroundColor=re;
+    }
+    */
+  </script>
+</body>
+
+</html>

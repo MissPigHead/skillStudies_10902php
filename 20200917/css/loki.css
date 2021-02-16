@@ -1,0 +1,13 @@
+h1,
+p {
+  /* color: red; */
+  color:red;
+  color:rgb(255,0,255);
+  /* color:#ff00ff; */
+  color:#f0f;
+
+  background-color: rgba(0,0,0,0.5);
+  /* background-color: #00000077; */
+  background-color: #0007;
+  font-size: 50px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS監聽某個元素是否符合條件而觸發行為</title>
+</head>
+<body>
+  <button id="ock">Try Me</button>
+  <button onclick="mybtn.removeEventListener('mouseover',fn1);">clear mouseover v1</button>
+
+  <script>
+    let mybtn=document.getElementById("ock");
+
+    mybtn.addEventListener("click",function(){
+      console.log("is click");
+    });
+
+    mybtn.addEventListener("mouseover",fn1);
+    mybtn.addEventListener("mouseover",fn2);
+
+    function fn1(){
+      console.log("is mouseover v1");
+    }
+    function fn2(){
+      console.log("is mouseover v2");
+    }
+
+  </script>
+</body>
+</html>

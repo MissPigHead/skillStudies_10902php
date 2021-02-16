@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="q3t8.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form action="">
+    <div class="box">
+      <!-- <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">B 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D03.png) no-repeat center;">B 排 1 號</label>
+      <label style="background: url(media/03D02.png) no-repeat center;">B 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">B 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">B 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>
+      <label style="background: url(media/03D02.png) no-repeat center;">A 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label> -->
+    </div>
+    <div style="width: 540px; margin:0 auto">
+      <hr>
+      <input type="hidden" name="title">
+      <input type="hidden" name="date">
+      <input type="hidden" name="time">
+      <p>你選擇的電影是：<span id="mm"></span></p>
+      <p>你選擇的時間是：<span id="tt"></span></p>
+      <p>你勾選了<span id="nn">0</span>張票，最多可購買4張</p>
+      <p><input type="submit" value="確定"></p>
+    </div>
+  </form>
+  <script>
+    $.getJSON("data.json", function (re) {
+      todo(re.q3t8);
+    })
+
+    function todo(myjson) {
+      //3 => 1排3號
+      //14 => 3排4號
+      const abcd = ['A', 'B', 'C', 'D']
+
+      for (let i = 1; i < 21; i++) {
+        const seatR = abcd[Math.floor((i - 1) / 5)]; //0~4 = >A~D
+        const seatC = (i - 1) % 5 + 1; //0~4 + 1
+        // console.log(seatR, seatC);
+
+        // const htmlCode = myjson.sellout.includes(i) ? `<label style="background: url(media/03D03.png) no-repeat center;">B 排 1 號</label>` : `<label style="background: url(media/03D02.png) no-repeat center;">B 排 1 號<input type="checkbox" name="buyseat[]" value="1"></label>`;
+        // $(".box").append(htmlCode);
+        if (myjson.sellout.includes(i)) { //true equare sellout
+          $(".box").append(`<label style="background: url(media/03D03.png) no-repeat center;">${seatR} 排 ${seatC} 號</label>`);
+        } else {
+          $(".box").append(`<label style="background: url(media/03D02.png) no-repeat center;">${seatR} 排 ${seatC} 號<input type="checkbox" name="buyseat[]" value="${i}"></label>`);
+        }
+      }
+
+      $("#mm").text(myjson.movie.title);
+      $("#tt").text(myjson.movie.date + " " + myjson.movie.time);
+      $("input[name='title']").val(myjson.movie.title);
+      $("input[name='date']").val(myjson.movie.date);
+      $("input[name='time']").val(myjson.movie.time);
+
+      let num = 0;
+      $("input:checkbox").click(function () {
+        if (this.checked) num < 4 ? num++ : this.checked = false;
+        else num--;
+        $("#nn").text(num);
+      });
+    }
+
+
+  </script>
+</body>
+
+</html>

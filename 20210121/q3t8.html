@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form method="get">
+    電影：<select name="mm" id="sm" onchange="gd()"></select>
+    日期：<select name="dd" id="sd" onchange="gt()"></select>
+    場次：<select name="tt" id="st"></select>
+    <input type="submit" value="確定">
+  </form>
+
+
+  <script>
+    // $.get("q3t8.php", { do: 'getmovie' }, function (re) {
+    //   console.log(typeof(re),re); //re is string
+    //   // console.log(JSON.parse(re)); // str2json
+    // },'json');
+
+    $.getJSON("q3t8.php?do=getmovie", function (re) {
+      // let content="";
+      // for (const row of re) content+=`<option value="${row.id}">${row.movie}</option>`;
+      // $("#sm").html(content);
+      for (const row of re) $("#sm").append(`<option value="${row.id}">${row.movie}</option>`);
+      gd();
+    });
+
+    function gd() { //根據目前#sm的值，產生對應#sd日期資料
+      const mvid = $("#sm").val();
+      $.get("q3t8.php", { do: 'getdate', mvid }, function (re) {
+        $("#sd").empty(); //不管啦先清空
+        for (const row of re) $("#sd").append(`<option value="${row.id}">${row.date}</option>`);
+        gt();
+      }, 'json');
+    }
+
+    function gt() { //根據目前#sm,#sd 的值，產生對應#st場次資料
+      const dtid = $("#sd").val();
+      $.get("q3t8.php", { do: 'gettime', id: dtid }, function (re) {
+        re = JSON.parse(re);
+        // console.log(re);
+
+        let time = [
+          { txt: "10:00~12:00", ticketLast: 20 },
+          { txt: "12:00~14:00", ticketLast: 20 },
+          { txt: "14:00~16:00", ticketLast: 20 },
+          { txt: "16:00~18:00", ticketLast: 20 },
+          { txt: "18:00~20:00", ticketLast: 20 },
+          { txt: "20:00~22:00", ticketLast: 20 },
+          { txt: "22:00~24:00", ticketLast: 20 }
+        ];
+        for (const row of re) {  // row={id: 1, movieDay: 1, time: 2, sellout: 2} 12~14
+          time[row['time'] - 1].ticketLast -= 2;
+        }
+
+        $("#st").empty(); //不管啦先清空
+
+        const nowTime = new Date(); // O年O月O日 15:24
+        const nowTimeToNum = Math.floor(nowTime.getHours() / 2) - 4;  // 10=>1,11=>1,12=>2,13=>2,14=>3,15=>3
+
+        const userSelectDay = $('#sd>option:selected').text();
+        // console.log(userSelectDay);
+        // console.log(new Date(userSelectDay).toDateString());
+        // console.log(nowTime.toDateString());
+
+        let count = 0;
+        for (const row of time) {
+          count++;
+          if (count <= nowTimeToNum && new Date(userSelectDay).toDateString() == nowTime.toDateString()) continue;
+          $("#st").append(`<option value="${count}">${row.txt} 剩餘座位 ${row.ticketLast}</option>`);
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>

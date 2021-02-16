@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    a:link {
+      color: white;
+      text-decoration: none;
+    }
+    a:visited {
+      color: white;
+    }
+    a:hover {
+      color: #ccc;
+    }
+    a:active {
+      color: white;
+    }
+
+    .menu {
+      background: black;
+      color: white;
+      font-size: 2rem;
+      list-style-type: none;
+      text-align: right;
+      position: sticky; /*平常是relative(普通)，離開viewpoint會變成fixed*/
+      top:2%;
+    }
+
+    .menu>li {
+      display: inline-block;
+      margin:15px 40px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://picsum.photos/1920/900/?random=1">
+  <nav class="menu">
+    <li><a href="http://www.google.com/">About</a></li>
+    <li><a href="http://www.google.com/">Product</a></li>
+    <li><a href="http://www.google.com/">Content</a></li>
+  </nav>
+  <img src="https://picsum.photos/1920/1080/?random=2">
+  <img src="https://picsum.photos/1920/1080/?random=3">
+  <img src="https://picsum.photos/1920/1080/?random=4">
+
+</body>
+
+</html>

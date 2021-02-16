@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let a = new Array();
+    // a.push(123);
+    // a.push(456);
+    a.push(123, 456, 789, "000");
+    // let rea1=a.pop();
+    // let rea2=a.shift();
+    // let b=[];
+    let b = [123, 456, 789, "000"];
+    // let reb1=b.pop();
+    // let reb2=b.shift();
+
+    a[7] = 777;
+    a.push(666);
+
+    ////////////////////////////////
+
+    let c = new Array();
+    c[0] = [1, 3, 5];
+    c[1] = [2, 4, 6];
+    c[2] = ["A", "B", "C"];
+
+    let d = [[1, 3, 5], [2, 4, 6], ["A", "B", "C"]];
+
+    ///////////////////////////////
+
+    let aa = new Array();
+    for (let i = 51; i < 61; i++) aa.push(i);
+    // aa.pop();
+    // aa.push(99);
+    // aa.shift();
+    // aa.unshift(0);
+
+    //foreach
+    function showme(val, idx) {
+      // console.log(val,idx);
+      console.log(`method1: index=${idx},value=${val}`);
+    }
+    aa.forEach(showme);//method1
+
+    aa.forEach(function (v, i) {//method2
+      console.log(`method2: index=${i},value=${v}`);
+    });
+
+    aa.forEach((v, i) => {//method3
+      console.log(`method3: index=${i},value=${v}`);
+    });
+
+    aa.forEach(v => {
+      console.log(`method4: value=${v}`);
+    });
+
+    //for-of 適合array應用，只帶出val不帶出key
+    for (const val of aa) {
+      console.log(`for-of: value=${val}`);
+    }
+
+    //filter 過濾 = foreach作用 + 收集 => 最後將收集的東西以新陣列方式回傳
+    aa[60] = 100;
+    aa.push(101, 102, 103);
+
+    /*
+    function clear(val) {
+      return (val>100);
+    }
+    bb=aa.filter(clear);
+    */
+    bb = aa.filter(e => { return (e > 54) });
+
+    //json
+    const animal={
+      cat:"喵",
+      dog:456,
+      horse:function(){
+        console.log("嘶~");
+      },
+      mouse:{
+        N1:"傑利鼠",
+        N2:"米奇",
+        N3:"奇奇"
+      }
+    };
+
+    //原生鏈 proto
+
+    //for-in 適合json (object)
+
+    for (const key in animal.mouse) {
+      console.log(`key=${key},value=${animal.mouse[key]}`);
+    }
+
+    console.log("cat" in animal);
+  </script>
+</body>
+
+</html>

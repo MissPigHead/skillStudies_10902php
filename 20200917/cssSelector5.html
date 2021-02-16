@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a {
+      text-decoration: none;
+      /* color:pink; */
+    }
+    /*偽類*/
+    a:link {
+      /* 設定還沒瀏覽過的連結樣式 */
+      color:red;
+    }
+    a:visited {
+      /* 設定已經瀏覽過的連結樣式 */
+      color:green;
+    }
+    a:hover {
+      /* 設定滑鼠移到連結上的樣式 */
+      color:blue;
+    }
+    a:active {
+      /* 設定正在被點選的連結樣式 */
+      color:orange;
+    }
+
+    /*否定選擇*/
+    p:not(.dark){
+      color:red;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="http://www.google.com">Google</a>
+
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p class="dark">Lorem ipsum dolor sit amet.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+</body>
+
+</html>

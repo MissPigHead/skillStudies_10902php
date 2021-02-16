@@ -1,0 +1,21 @@
+
+.box{
+  width: 100%;
+  height: 25vh;
+}
+
+.bg1{
+  background:lightblue;
+}
+.bg2{
+  background: lightgreen;
+}
+
+
+@media (min-width:768px){
+  .box{
+    width: 50%;
+    height: 50vh;
+    float: left;
+  }
+}

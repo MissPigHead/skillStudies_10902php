@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .talkingFrame {
+      border: 2px solid #FF4B8E;
+      width: 380px;
+      margin: 50px;
+      background-color: #FF79A2;
+      color: #fff;
+      position: relative;
+    }
+
+    .talkingFrame p {
+      text-align: center;
+      line-height: 130px;
+      /*撐出高度*/
+    }
+
+    .talkingFrame::before {
+      content: "";
+      /*讓before顯示出來*/
+      position: absolute;
+      top: -1.18em;
+      /*調整位置*/
+      left: 1em;
+      /*調整位置*/
+      padding: 1em;
+      /*做出對話框的角*/
+      background-color: inherit;
+      border: inherit;
+      /*讓before繼承talkingFrame的CSS屬性*/
+      border-right: 0;
+      /*隱藏內邊的border*/
+      border-bottom: 0;
+      /*隱藏內邊的border*/
+      transform: rotate(45deg);
+      /*旋軟角度*/
+    }
+  </style>
+</head>
+
+<body>
+  <div class="talkingFrame">
+    <p>一天又平安的過去了，感謝飛天小女警的努力！</p>
+  </div>
+</body>
+
+</html>

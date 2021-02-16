@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3 onclick="add()">touch me</h3>
+  <h3 id="demo">touch me</h3>
+
+
+
+  <script>
+    function add(){
+      let btn=document.createElement("button");
+      btn.textContent="YA";
+      document.body.appendChild(btn);
+    }
+    document.getElementById("demo").onclick=add;
+    /*
+      createElement() 建立元素
+      appendChild() 插入子元素於最後
+      replaceChild() 指定某子元素替換
+      removeChild() 移除指定的子元素
+    */
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+body{
+  background: #358;
+  color:white;
+  margin: 0;
+}
+
+#main{
+  margin: 0 auto;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#box{
+  /* height: 414px; */
+  flex:0 0 414px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.control{
+  width: 400px;
+  margin: 10px 30px;
+}
+
+.control img{
+  /* width: 90px; */
+  padding: 0 5px;
+  cursor: pointer;
+}
+.control img:focus{
+  outline: none;
+}
+
+#aniZone{
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+}
+
+#aniZone.scale{
+  transform: scale(0);
+}

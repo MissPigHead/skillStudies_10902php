@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div style="text-align: center;" class="dbor">
+    <span class="t botli">校園映象區</span>
+    <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="media/01E01.jpg" onclick="pp(1)">
+      <div class="imglist" style="display: flex;flex-direction: column;margin: 10px auto; border: 4px solid;">
+        <!-- <img calss="im" id="ssaaN" src="media/01D01.jpg" width="150" height="103"> -->
+      </div>
+      <img src="media/01E02.jpg" onclick="pp(2)">
+    </div>
+    <script>
+      let nowpage = 0, total;
+
+      $.getJSON("data.json", function (re) {
+        todo(re.q1t6);
+      });
+
+      function todo(myjson) {
+        // console.log(myjson);
+
+        //DOM寫入
+        for (let i = 0; i < myjson.length; i++)
+          $(".imglist").append(`<img class="im" id="ssaa${i}" src="${myjson[i]}" width="150" height="103">`);
+
+        //初始化
+        $(".im").hide();
+        for (let i = 0; i < 3; i++) $(`#ssaa${i}`).show();
+
+        //記住圖片總數
+        total = myjson.length;
+
+      }
+
+      function pp(x) {
+        //向上作業  if nowpage=1 : #1#2#3 => #0#1#2
+        if (x == 1 && nowpage > 0) {
+          nowpage--;  // 0
+          $(`#ssaa${nowpage}`).slideToggle();
+          $(`#ssaa${nowpage + 3}`).slideToggle();
+        }
+
+        /*
+        #0#1#2#3#4#5#6#7  total:8 last now is 8-3
+        -----------------------------
+        #0#1#2 now:0 ↓
+        #1#2#3 now:1 ↓
+        #2#3#4 now:2 ↓
+        #3#4#5 now:3 ↓
+        #4#5#6 now:4 ↓
+        #5#6#7 now:5 X
+
+        #0#1#2#3#4  total:5  last now is 5-3
+        ---------------------------
+        #0#1#2 now:0
+        #1#2#3 now:1
+        #2#3#4 now:2
+        #3#4  X
+        #4  X
+        */
+
+        //向下作業 if nowpage=0  #0#1#2=>#1#2#3
+        if (x == 2 && nowpage < total - 3) {
+          //nowpage 0
+          $(`#ssaa${nowpage}`).slideToggle();
+          $(`#ssaa${nowpage + 3}`).slideToggle();
+          nowpage++; //1
+        }
+      }
+
+      //優化滑鼠
+      $("img[onclick^='pp']").css('cursor', 'pointer');
+    </script>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

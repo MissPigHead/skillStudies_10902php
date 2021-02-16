@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="myblock" style="width:100px;height:100px;background-color: red;" title="A"></div>
+  <hr />
+  <input type="button" value="正方形" onclick="trans('A')" />
+  <input type="button" value="圓形" onclick="trans('B')" />
+  <input type="button" value="三角形" onclick="trans('C')" />
+  <p>Color Code: <input type="text" onchange="color(this.value)" /></p>
+
+  <script>
+    var zone = document.getElementById("myblock");
+    var clr = zone.style.backgroundColor; //red
+    function trans(re) {
+      switch (re) {
+        case "A":
+          zone.style = "width:100px;height:100px;background-color:" + clr;
+          zone.title = "A";
+          break;
+        case "B":
+          zone.style = "width:100px;height:100px;background-color:" + clr + ";border-radius: 50px;";
+          zone.title = "B";
+          break;
+        case "C":
+          zone.style = "width:0;height:0;border-left: 50px solid transparent;border-right: 50px solid transparent;border-bottom: 100px solid " + clr + ";";
+          zone.title = "C";
+          break;
+      }
+    }
+    function color(re) {
+      /* method 1
+      if(zone.title=="C") zone.style.borderBottomColor=re; //for Triangle
+      else zone.style.backgroundColor = re; //目前的顏色換掉 for squre and circle
+      */
+      /* method 2 */
+      if (zone.style.backgroundColor == "") zone.style.borderBottomColor = re;
+      else zone.style.backgroundColor = re;
+
+      clr = re; //把所有的色變數更新一下
+    }
+  </script>
+</body>
+
+</html>

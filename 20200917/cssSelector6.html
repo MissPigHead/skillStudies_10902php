@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 關係偽類 */
+    /* :nth-child() */
+    p:first-child {
+      color: red;
+    }
+
+    p:last-child {
+      color: green;
+    }
+
+    p:nth-child(3) {
+      /*第三個，初始最小為1*/
+      color: blue;
+    }
+
+    p:nth-child(odd) {
+      /*排列基數,ex 1,3,5 ,ps 偶數為even*/
+      background: pink;
+    }
+
+    /* :nth-of-type() */
+    /* 
+    even => 2n
+    odd =>2n+1
+    */
+    div:nth-of-type(2n) {
+      background: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <h3>lorem</h3>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <div>Lorem ipsum dolor sit amet.</div>
+  </center>
+  <hr>
+  <section>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <h3>lorem</h3>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </section>
+
+</body>
+
+</html>

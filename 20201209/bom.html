@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>HELLO WORLD</h1>
+  <script>
+    /*
+      console.log("1");
+      console.log("2");
+      alert("提示視窗");
+      console.log("3");
+      console.log("4");
+    */
+    /*
+      const ans=confirm("你的問題");
+      alert(`Your Selected ${ans}`);
+    */
+    /*
+      const msg=prompt("你的問題","default value");
+      if(msg) alert(`Your Answer is ${msg}`); //null same as false
+      else alert(`Your never answer to me`);
+    */
+    // let delay=function(){
+    //   console.log("BOOM!!!")
+    // }
+    // setTimeout(delay, 5000);
+    /*
+      let s1=setTimeout(()=>{
+        console.log("BOOM!!!")
+      }, 10000);
+      let s2=setTimeout(()=>{
+        console.log("BOOM!!!")
+      }, 10000);
+      clearTimeout(s1);
+    */
+    
+    let i=1;
+    let s3=setInterval(() => {
+      console.log(i);
+      if(i==5) clearInterval(s3);
+      i++;
+    }, 1000);
+    // clearInterval(s3);
+
+    /* setTimeout 模擬 setTnterval 效果
+    let j=6;
+    let boom=function(){
+      setTimeout(() => {
+        console.log(j);
+        j++;
+        boom();
+      }, 1000);
+    }
+    boom();
+    */
+    
+  </script>
+
+</body>
+
+</html>

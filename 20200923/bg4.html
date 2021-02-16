@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="margin:0">
+  <!-- 廣告圖常用的做法 ，RWD -->
+  <div style="
+    height:300px;
+    background-image: url('https://picsum.photos/1000/600/?random=1');
+    background-size: cover;
+    background-position: center;
+  "></div>
+
+  <!-- 圖片效果 + 圖片填滿方式(控制裁切) -->
+  <img src="https://picsum.photos/1000/600/?random=1" style="height:300px;width: 100%;object-fit: cover;">
+
+  <!-- 如何用BG模擬出一張普通圖片 -->
+  <div style="
+    background-image: url('https://picsum.photos/1000/600/?random=1');
+    background-size: cover;
+    padding-top: 60%;
+  "></div>
+
+
+</body>
+
+</html>

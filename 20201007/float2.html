@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 960px;
+      margin:0 auto;
+      border: 1px solid blue;
+      /* overflow: hidden; */
+    }
+    .clear::before,.clear::after{
+      content: "";
+      clear: both;
+      display: block;
+    }
+    .col{
+      width: 300px;
+      margin:10px;
+      box-sizing: border-box;
+      border:5px solid lightcoral;
+      padding:10px;
+      float: left;
+    }
+    .clrbox{
+      width: 960px;
+      height: 50px;
+      border: 1px solid red;
+      background: lightgreen;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container clear">
+    <!-- ::before -->
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <div class="col">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reiciendis! Placeat a tenetur
+      reiciendis. Illum, eaque tenetur. Corrupti, optio et molestias obcaecati quasi facilis iste tenetur illum in vero
+      provident?</div>
+    <!-- <div style="clear:both"></div> -->
+    <!-- use ::after setting clear:both-->
+  </div>
+  <div class="clrbox">lorem</div>
+  <div class="clrbox">lorem</div>
+</body>
+
+</html>

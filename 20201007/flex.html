@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .flex,
+    .inlineflex {
+      height: 400px;
+      width: 400px;
+      background: cornsilk;
+      border: 1px solid;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .inlineflex {
+      display: inline-flex;
+    }
+
+    .item {
+      width: 100px;
+      height: 100px;
+      margin: 0;
+    }
+
+    .r {
+      background: crimson;
+    }
+
+    .g {
+      background: darkgreen;
+    }
+
+    .b {
+      background: darkslateblue;
+    }
+
+    nav {
+      display: flex;
+      border: 1px solid;
+      background: wheat;
+    }
+
+    a {
+      /* margin:0 5px; */
+      padding: 30px 15px;
+      background: violet;
+      /* height: 30px; */
+      /* display: inline-block; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <p class="item r"></p>
+    <span class="item g"></span>
+    <p class="item b"></p>
+  </div>
+
+  <hr>
+
+  <nav>
+    <a href="#">Google</a>
+    <a href="#">Google</a>
+    <a href="#">Google</a>
+  </nav>
+
+  <div class="inlineflex">
+    <p class="item r"></p>
+    <span class="item g"></span>
+    <p class="item b"></p>
+  </div>
+  <!-- <span>inline</span>
+  <div>block</div> -->
+
+
+</body>
+
+</html>

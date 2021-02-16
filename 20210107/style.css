@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 480px;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  width: 320px;
+  height: 320px;
+  padding: 10px;
+  background: lightslategrey;
+  border-radius: 10px;
+}
+
+.content > img {
+  flex: 0 0 100px;
+  background: yellow;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  cursor: url("shark/fish.png"), pointer;
+}

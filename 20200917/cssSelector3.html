@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    nav p{
+      /* 後代 */
+      color:red;
+    }
+    nav>p{
+      /*子代*/
+      color:green;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <div><p>Lorem ipsum dolor sit amet.</p></div>
+    <h6>lorem</h6>
+    <p>Lorem, ipsum.</p>
+  </nav>
+  <p>Lorem ipsum dolor sit amet.</p>
+</body>
+
+</html>

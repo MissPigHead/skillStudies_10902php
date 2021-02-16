@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form>
+    <p>新稱管理者帳號</p>
+    <p>帳號：<input type="text" name="acc"></p>
+    <p>密碼：<input type="password" name="pwd"></p>
+    <p>
+      確認密碼：<input type="password" name="chkpwd"><br>
+      <b></b>
+    </p>
+    <p><input type="submit" value="新增"><input type="reset" value="重製"></p>
+  </form>
+
+
+  <script>
+    // $('form').submit(false); //取消提交
+    $('form').submit(function () {
+      // console.log("done");
+      const
+        pa = $("input[name=pwd]"),
+        pb = $("input[name=chkpwd]");
+
+      if (pa.val() != pb.val()) {
+        // alert("密碼不一致");
+        $("b").text("密碼不一致").css('color', 'red');
+        return false;
+      }
+      if (pa.val().length < 8) {
+        // alert("密碼長度最少8個");
+        $("b").text("密碼長度最少8個").css('color', 'blue');
+        return false;
+      }
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="plugin/slick-theme.css">
+  <link rel="stylesheet" href="plugin/slick.css">
+  <link rel="stylesheet" href="q3t4.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="plugin/slick.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <h1>預告片介紹</h1>
+    <div id="box">
+      <div id="aniZone">
+        <img src="media/03A09.jpg">
+        <p>123</p>
+      </div>
+    </div>
+    <div class="control">
+      <!-- <img src="media/03A09.jpg" alt="電影名稱">*n -->
+    </div>
+    <script>
+      let myjson = null, effect = null, pause = null;
+
+      $.getJSON("data.json", function (re) {
+        myjson = re.q3t4.img;
+        effect = re.q3t4.effect;
+        todo();
+      })
+
+      function todo() {
+        //初始化小圖
+        for (const key in myjson) {
+          // console.log(key,myjson[key]);
+          $(".control").append(`<img src="${myjson[key]}" alt="${key}">`)
+        }
+        //Object.keys() 能將物件資料的key值整理為陣列回傳，所以能知道所有的key內容與順序
+        //初始主圖與片名
+        $("#aniZone>img").attr("src", myjson[Object.keys(myjson)[0]]);
+        $("#aniZone>p").text(Object.keys(myjson)[0]);
+        //slick 美化生成
+        $(".control").slick({
+          dots: true,
+          slidesToShow: 4,
+          slidesToScroll: 4
+        });
+        //click min-img
+        $(".control img").click(function () {
+          // console.log(this);
+          const key = $(this).attr("alt");
+          swap(key); // 由swap負責處理換主圖與片名
+          clearInterval(pause);
+          autoplay(key);
+        })
+        autoplay(Object.keys(myjson)[0]);  //第 ary[0] 之 value為首key
+      }
+
+      function swap(key) { //根據後台effect參數來影響JS的替換動畫
+        switch (effect) {
+          case 1: //淡入淡出
+            $("#aniZone").fadeToggle(function () {
+              $(this).find("img").attr('src', myjson[key]);
+              $(this).find("p").html(key);
+              $(this).fadeToggle();
+            });
+            break;
+          case 2: //收合
+            $("#aniZone").slideToggle(function () {
+              $(this).find("img").attr('src', myjson[key]);
+              $(this).find("p").html(key);
+              $(this).slideToggle();
+            });
+            break;
+          case 3://sacle,因為animate不支援非單位型之CSS，所以用classToogle來切換，轉場細節由CSS處理
+            $("#aniZone").toggleClass("scale");
+            setTimeout(() => {
+              $("#aniZone").find("img").attr('src', myjson[key]);
+              $("#aniZone").find("p").html(key);
+              $("#aniZone").toggleClass("scale");
+            }, 500);
+            break;
+          case 4: // leave to left
+            $("#aniZone").animate({
+              left: "-100%"
+            }, function () {
+              $(this).find("img").attr('src', myjson[key]);
+              $(this).find("p").html(key);
+              $(this).css("left", "100%");
+              $(this).animate({ left: 0 });
+            });
+            break;
+        }
+      }
+
+      function autoplay(key) { //需要知道從誰開始輪播
+        /*
+        const jsnAry=Object.keys(myjson); //(9) ["03A01", "03A02", "03A03", "03A04", "03A05", "03A06", "03A07", "03A08", "03A09"]
+        const idx=jsnAry.indexOf(key);
+        */
+        let idx = Object.keys(myjson).indexOf(key); // key=>array=>index
+        //console.log(idx); // key 換成 index值
+
+        pause = setInterval(() => {
+          idx = (idx + 1) % Object.keys(myjson).length; //idx累加且歸零
+
+          //新idx=>新key |||| Object.keys(myjson)[idx] => key of index idx
+          swap(Object.keys(myjson)[idx]);
+        }, 2000);
+
+      }
+    </script>
+
+
+    <!--
+    <div class="rb tab" style="width:95%;">
+      <div id="abgne-block-20111227">
+        <ul class="lists">
+        </ul>
+        <ul class="controls">
+        </ul>
+      </div>
+    </div>
+    -->
+  </div>
+</body>
+
+</html>

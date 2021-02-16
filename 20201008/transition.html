@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轉場</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .box,.box2{
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      color: white;
+      background: #0F0;
+      border-radius: 0px;
+    }
+
+    .box {
+      /*
+      transition-property: all;  套用對象
+      transition-duration: 0s;  轉場持續時間
+      transition-timing-function: ease; 時間漸變寒式
+      transition-delay: 0s; 延遲秒數
+      */
+
+      /* transition: all 2s cubic-bezier(0.53,-0.54, 0.39, 1.31); */
+      /* transition: 
+        width 1s ease 0s,
+        background-color 1s ease-in 1s,
+        border-radius 1s ease-out 2s; */
+      transition-property: width,background-color,border-radius;
+      transition-duration: 2s;
+      transition-timing-function: ease,ease-in,ease-out;
+      transition-delay: 0s,2s,4s;
+    }
+
+    .box:hover {
+      width: 500px;
+      background: #F00;
+      border-radius: 25px;
+
+      /* transition: all 2s cubic-bezier(0.53,-0.54, 0.39, 1.31); */
+    }
+
+    .box2{
+      position: relative;
+    }
+
+    .box2::after{
+      content:"transition";
+      width: 100px;
+      height: 100px;
+      background: #F00;
+      position: absolute;
+      left:0;
+      top:0;
+      opacity: 0.5;
+      transform: translate(0,0) rotate(0deg);
+      transform-origin: left bottom;
+
+      transition: 
+        opacity 1s ease,
+        left 1s linear 1s,
+        transform 1s ease-out 2s;
+        /* all 2s ease; */
+    }
+
+    .box2:hover::after{
+      opacity: 1;
+      left:100px;
+      transform: rotate(90deg);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="box">Before</div>
+  <div class="box2">DEMO</div>
+</body>
+
+</html>

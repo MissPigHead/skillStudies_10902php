@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+table {
+  margin: 1rem;
+  display: inline-block;
+}
+table,
+tr,
+td {
+  border: 1px solid #000;
+}
+td {
+  width: 200px;
+  height: 200px;
+  padding:0;
+}
+.a {
+  background-color: red;
+}
+.b {
+  background: url("https://picsum.photos/50/50/?random=1") no-repeat 100%/100%;
+}
+.c {
+  background: url("https://picsum.photos/50/50/?random=1") repeat-x;
+}
+.d {
+  background: url("https://picsum.photos/50/50/?random=1") repeat-y;
+}
+.e {
+  background: url("https://picsum.photos/50/50/?random=1") no-repeat 50%;
+}
+.f {
+  background: url("https://picsum.photos/50/50/?random=1") no-repeat center lightgoldenrodyellow;
+}
+.g {
+  /* background: 
+    url("https://picsum.photos/200/50/?random=1") no-repeat,
+    url("https://picsum.photos/200/100/?random=1") no-repeat center,
+    url("https://picsum.photos/200/50/?random=1") no-repeat bottom; */
+    background:
+      url("https://picsum.photos/200/100/?random=1") no-repeat center,
+      url("https://picsum.photos/200/50/?random=1");
+}
+.h{
+  background: linear-gradient(to right,black,blue);
+}
+.i{
+  background: radial-gradient(circle,black,white);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event 事件</title>
+  <script>
+    function fn(e) {
+      alert(e);
+    }
+    // let demo = null;
+    function whatIt(e) {
+      // demo = e;
+      console.log(e.value);
+
+      if (e.style.fontSize) e.style.fontSize = null;
+      else {
+        // e.style="color:red;font-size:2rem";
+        e.style.color = "red";
+        e.style.fontSize = "2rem";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <input type="button" value="onclick1" onclick="fn('這是click效果')" onmouseover="fn('這是hover in效果')">
+  <hr>
+  <input type="button" value="onclick2" onclick="whatIt(this)">
+  <input type="button" value="onmousedown" onmousedown="whatIt(this)">
+  <input type="button" value="onmouseup" onmouseup="whatIt(this)">
+  <input type="button" value="onmouseover" onmouseover="whatIt(this)">
+  <input type="button" value="onmouseout" onmouseout="whatIt(this)">
+  <input type="text" value="onchange" onchange="whatIt(this)">
+  <input type="text" value="onfocus" onfocus="whatIt(this)">
+  <input type="text" value="onblur" onblur="whatIt(this)">
+  <hr>
+  <div id="fakebtn"></div>
+  <button id="keycode">press keyboard</button>
+
+  <script>
+    let fakebtn=document.getElementById("fakebtn");
+    fakebtn.innerHTML = "假按鈕";
+    fakebtn.style = "background: aquamarine;box-shadow: 1px 1px 1px 0px #0000006b;cursor: pointer;display: inline;padding: 5px;";
+    fakebtn.onclick=function(){
+      console.log(this.style.backgroundColor);
+    }
+
+    /*event 事件 on keyboard*/
+    let keyword=new Array();
+    keyword[87]="W";
+    keyword[83]="S";
+    keyword[65]="A";
+    keyword[68]="D";
+
+    document.onkeydown=()=>{
+      console.log(event.code);
+      document.getElementById("keycode").innerHTML=keyword[event.which];
+    };
+  </script>
+
+</body>
+
+</html>

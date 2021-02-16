@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    /*************************************************因為CORS 同源政策，對方API沒有特別全面開放，所以取得會失敗*********************
+    $.getJSON('https://data.ntpc.gov.tw/api/datasets/71CD1490-A2DF-4198-BEF1-318479775E8A/json') 
+      .done((re) => {
+        console.log(re)
+      });
+    ******************************************************************************************************************************/
+    $.getJSON('api.php').done((re) => {
+      console.log(re);
+      document.write(JSON.stringify(re));
+
+    }
+    );  //後端給的會是字串，因為getJSON方式自動轉JSON格式
+  </script>
+</body>
+
+</html>

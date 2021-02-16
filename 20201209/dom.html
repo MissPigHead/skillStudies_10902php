@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="demo1">HELLO WORLD</h1>
+  <!--node 節點-->
+  <h1 id="demo2">HELLO WORLD</h1>
+  <!--node 節點-->
+  <div id="menu">
+    <ul id="total">
+      <li class="list">001</li>
+      <li class="list">002</li>
+      <li class="list">003</li>
+      <li class="list">004</li>
+      <li class="list">005</li>
+    </ul>
+  </div>
+  <a href="http://www.google.com" title="atitle" name="aname" id="aid">Google</a>
+  <input type="button" value="按鈕">
+  <script>
+    const de2 = document.getElementById("demo2");
+    const mnu = document.getElementById("menu");
+    const tt = document.getElementById("total");
+    // tt.innerHTML=`
+    //   <li>aaa</li>
+    //   <li>bbb</li>
+    //   <li>ccc</li>
+    // `;
+    // tt.textContent=`
+    //   <li>AAA</li>
+    //   <li>BBB</li>
+    //   <li>CCC</li>
+    // `;
+    const multAry = document.getElementsByClassName("list");
+    const multAry2 = document.getElementsByTagName("li");
+    const demoA=document.getElementById("aid");
+
+    const demoB=document.querySelectorAll(".list"); //自己研究
+  </script>
+</body>
+
+</html>

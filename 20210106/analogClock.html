@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>analog Clock</title>
+  <link rel="stylesheet" href="analog.css">
+  <script src="getDeg.js"></script>
+
+</head>
+
+<body>
+  <div class="circle">
+    <div class="zhour1">
+      <div class="jhour1"></div>
+    </div>
+    <div class="zmin1">
+      <div class="jmin1"></div>
+    </div>
+    <div class="zsec1">
+      <div class="jsec1"></div>
+    </div>
+    <h3>Animation + 雙DIV</h3>
+  </div>
+
+  <div class="circle">
+    <div class="jhour2"></div>
+    <div class="jmin2"></div>
+    <div class="jsec2"></div>
+    <h3>Animation + img</h3>
+  </div>
+
+  <div class="circle">
+    <svg class="svgh" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+      enable-background="new 0 0 300 300" xml:space="preserve">
+      <g>
+        <rect x="146" y="86" fill="#0071BC" width="8" height="72" />
+        <polygon fill="#0071BC" points="149.674,76 143.347,91.479 149.674,87.807 156,91.479   " />
+      </g>
+    </svg>
+    <svg class="svgm" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+      enable-background="new 0 0 300 300" xml:space="preserve">
+      <g>
+        <rect x="146" y="12" fill="#009245" width="6" height="146" />
+        <polygon fill="#009245" points="149.674,2 143.347,17.479 149.674,13.807 156,17.479   " />
+      </g>
+    </svg>
+    <svg class="svgs" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+      enable-background="new 0 0 300 300" xml:space="preserve">
+      <g>
+        <rect x="146" y="12" fill="#FF0000" width="6" height="146" />
+        <polygon fill="#FF0000" points="149.674,2 143.347,17.479 149.674,13.807 156,17.479   " />
+      </g>
+    </svg>
+    <h3>Animation + SVG</h3>
+  </div>
+
+  <div class="circle">
+    <div class="jhour1 orih anih"></div>
+    <div class="jmin1 orim anim"></div>
+    <div class="jsec1 oris anis"></div>
+    <h3>Animation + 中心偏移</h3>
+  </div>
+
+  <div class="circle no4">
+    <div class="jhour1 orih"></div>
+    <div class="jmin1 orim"></div>
+    <div class="jsec1 oris"></div>
+    <h3>setInterval + 中心偏移</h3>
+  </div>
+
+</body>
+
+</html>

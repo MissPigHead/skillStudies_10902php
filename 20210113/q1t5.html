@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!--正中央-->
+  <div style="width:100%; padding:2px; height:290px;">
+    <div id="mwww" loop="true" style="width:100%; height:100%;">沒有資料</div>
+  </div>
+
+  <script>
+    $.getJSON("data.json", function (result) { //一種ajax技術，採非同步技術
+      todo(result.q1t5);
+    })
+    function todo(myjson) { //都是ajax之後所執行的代碼
+      if (myjson.length) { //有圖片先跑第0張
+        $("#mwww").html("<embed loop=true src='" + myjson[0] + "' style='width:99%; height:100%;'></embed>");
+      }
+      if (myjson.length > 1) { // 發現圖片不只一張時
+        let now = 1;
+        setInterval(() => {
+          $("#mwww>embed").attr("src", myjson[now]);
+          now = (now + 1) % myjson.length;  // total 6 => 012345
+        }, 3000);
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>

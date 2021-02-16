@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    section.container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+
+    div {
+      background: #3303;
+      border: 1px solid;
+      padding: 10px;
+      font-size: 2rem;
+      flex:0 0 8%;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body style="margin:0">
+  <!-- <h1>練習：使用document.write 輸出 99 乘法表，方法與美觀隨意</h1> -->
+  <section class="container">
+    <script>
+      for (let i = 2, j = 1; i < 10; j++) {
+        if (j == 1) document.write('<div>');
+        document.write(`${i}×${j} = ${i * j}`);
+        if (j == 9) {
+          j = 0; i++;
+          document.write('</div>');
+        }
+        else document.write('<br>');
+      }
+      document.write('</div>');
+    </script>
+  </section>
+  <script>
+
+
+  </script>
+</body>
+
+</html>
